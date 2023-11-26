@@ -1,16 +1,15 @@
-const express = require("express");
+const userRouter = require('express').Router();
 const {
-  signup,
-  login,
-  searchUser,
-  userData,
-} = require("../../controller/users.controller");
-const { authentication } = require("../../middlewares/authentication");
-const router = express.Router();
+    signup,
+    login,
+    searchUser,
+    userData,
+} = require('../../controller/users.controller');
+const { authentication } = require('../../middlewares/authentication');
 
-router.post("/signup", signup);
-router.post("/login", login);
-router.get("/info", authentication, userData);
-router.get("/search", searchUser);
+userRouter.post('/signup', signup);
+userRouter.post('/login', login);
+userRouter.get('/info', authentication, userData);
+userRouter.get('/search', searchUser);
 
-module.exports = router;
+module.exports = userRouter;

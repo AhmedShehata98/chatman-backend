@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const { dbUrl } = require('./config');
 
 function connectDB() {
-  mongoose
-    .connect(process.env.DATABASE_URL)
-    .then((value) => console.log(`CONNECTED DATABASE SUCCESS !!`))
-    .catch((err) => console.log(err.message));
+    mongoose
+        .connect(dbUrl)
+        .then(() => console.log(`CONNECTED DATABASE SUCCESS !!`))
+        .catch((err) => console.log(err.message));
 }
 module.exports = connectDB;

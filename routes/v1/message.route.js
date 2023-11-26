@@ -1,8 +1,7 @@
-const express = require("express");
-const { authentication } = require("../../middlewares/authentication");
-const { getUserMessages } = require("../../controller/message.controller");
-const router = express.Router();
+const messagesRouter = require('express').Router();
+const { authentication } = require('../../middlewares/authentication');
+const { getUserMessages } = require('../../controller/message.controller');
 
-router.get("/:conversationId", getUserMessages);
+messagesRouter.get('/:conversationId', getUserMessages);
 
-module.exports = router;
+module.exports = messagesRouter;
