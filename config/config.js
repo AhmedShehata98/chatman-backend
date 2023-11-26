@@ -8,6 +8,7 @@ const config = {
     port: process.env.PORT || 7000,
     jwtSecret: process.env.JWT_KEY,
     saltRounds: +process.env.SALT_ROUNDS,
+    socketOrigin: process.env.SOCKET_ORIGIN
 };
 
 if (process.env.NODE_ENV == 'development') {
