@@ -54,7 +54,7 @@ async function login(req, res) {
             );
 
             res.json({
-                message: `welcome back ${username}, logged in successfully`,
+                message: `welcome back ${user.username}, logged in successfully`,
                 token,
             });
         } else {
