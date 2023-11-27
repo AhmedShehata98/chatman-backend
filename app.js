@@ -8,20 +8,25 @@ const upload = multer();
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const envConfig = require('dotenv');
 
 // other imports
 const createSocketServer = require('./socket/socketServer.js');
 const apiRouter = require('./routes/apiRouter.js');
 const infoRouter = require('./routes/infoRouter.js');
-const { port } = require('./config/config.js');
-
+const { port, socketOrigin } = require('./config/config.js');
 const { server, initConnection } = createSocketServer(app);
 
 connectDB();
 initConnection();
+envConfig.config();
 
 app.use(helmet());
-app.use(cors());
+app.use(
+    cors({
+        origin: socketOrigin,
+    }),
+);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
